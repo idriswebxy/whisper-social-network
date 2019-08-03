@@ -1,9 +1,19 @@
-const express = require("express");
-const router = express.Router();
+const jwt = require("jsonwebtoken");
+const config = require("config");
 
-router.get("/", (req, res) => {
-  res.send("Auth route");
-});
+module.exports = function(req, res, next) {
+  //  Get token from header
+  const token = req.header("x-auth-token");
 
+  // check if no token
+  if (!token) {
+    return res.status(401).json({ msg: "No token, authorization denied " });
+  }
 
-module.exports = router;
+  try {
+    const decoded = jwt.verify(token, config.get("jwtSecret"));
+
+    req.user = decoded.user;
+    next();
+  } catch (err) {}
+};
