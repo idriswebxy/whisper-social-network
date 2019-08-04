@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "server": "nodemon server.js",
     "app": "nodemon app.js",
     "start": "concurrently \"nodemon server.js\" \"cd client && npm start\""
   },

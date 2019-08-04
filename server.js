@@ -1,6 +1,4 @@
 const express = require("express");
-const bodyParser = require("body-parser");
-const mongoose = require("mongoose");
 const connectDB = require("./config/db");
 const dotenv = require("dotenv");
 dotenv.config();
@@ -23,6 +21,5 @@ app.listen(PORT, () => {
 });
 
 app.get("/", (req, res) => {
-  console.log("Its working!");
-  res.send("Working...")
+  res.send("Server running...")
 });
