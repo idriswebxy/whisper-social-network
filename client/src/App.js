@@ -1,22 +1,38 @@
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import React, { Component } from "react";
-import Login from "../src/components/auth/Login";
-import Navbar from "./components/Navbar/Navbar";
-import Register from "./components/Navbar/Navbar";
-export default class App extends Component {
-  state = {
-    view: "login"
-  };
+import Particles from "react-particles-js";
+import Navigation from "./components/Navigation/Navigation";
+import Signin from "./components/Signin/Signin";
+import Register from "./components/Register/Register";
+import './App.css'
 
+const particlesOptions = {
+  particles: {
+    number: {
+      value: 30,
+      density: {
+        enable: true,
+        value_area: 800
+      }
+    }
+  }
+};
+
+
+
+export default class App extends Component {
+
+  
   render() {
-    let { view } = this.state;
+   
 
     return (
       <Router>
-        <div> 
-          <Navbar />
-          <Route path="/" component={Login} />
-          <Route path="/register" component={Register}/>
+        <div className="App">
+          <Navigation />
+          <Particles className="particles" params={particlesOptions} />
+          <Route path="/signin" component={Signin} />
+          <Route path="/register" component={Register} />
         </div>
       </Router>
     );
