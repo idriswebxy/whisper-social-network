@@ -1,29 +1,61 @@
 import React, { Component } from "react";
-import './auth.css';
-
-
+import axios from "axios";
+import "./auth.css";
 
 export default class Login extends Component {
+  state = {
+    email: "",
+    password: ""
+  };
+
+  onSubmit = e => {
+    e.preventDefault();
+    const { email, password } = this.state;
+
+    axios
+      .post("http://localhost:5000/api/auth", { email, password })
+      .then(res => {
+        console.log(res);
+      });
+  };
+
+  onEmailChange = event => {
+    this.setState({ email: event.target.value });
+  };
+
+  onPasswordChange = event => {
+    this.setState({ password: event.target.value });
+  };
+
   render() {
     return (
       <div>
-        <div class="login-page">
-          <div class="form">
-            <form class="register-form">
+        <div className="login-page">
+          <div className="form">
+            <form className="register-form">
               <input type="text" placeholder="name" />
               <input type="password" placeholder="password" />
               <input type="text" placeholder="email address" />
               <button>create</button>
-              <p class="message">
+              <p className="message">
                 Already registered? <a href="#">Sign In</a>
               </p>
             </form>
-            <form class="login-form">
-              <input type="text" placeholder="username" />
-              <input type="password" placeholder="password" />
-              <button>login</button>
-              <p class="message">
-                Not registered? <a href="#">Create an account</a>
+
+            <form className="login-form" onSubmit={this.onSubmit}>
+              <input
+                type="email"
+                placeholder="email"
+                onChange={this.onEmailChange}
+              />
+              <input
+                type="password"
+                placeholder="password"
+                onChange={this.onPasswordChange}
+              />
+              <button type="submit">login</button>
+              <p className="message">
+                Not registered? <button>Sing Up</button>
               </p>
             </form>
           </div>

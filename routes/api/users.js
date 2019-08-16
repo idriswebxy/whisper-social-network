@@ -2,12 +2,11 @@ const express = require("express");
 const router = express.Router();
 const { check, validationResult } = require("express-validator");
 const User = require("../../models/Users");
-const bcrypt = require("bcryptjs");
+const bcrypt = require("bcrypt");
 const gravatar = require("gravatar");
 const jwt = require("jsonwebtoken");
 const config = require("config");
 require("dotenv").config();
-
 
 router.post(
   "/",
@@ -22,7 +21,9 @@ router.post(
     ).isLength({ min: 6 })
   ], 
   async (req, res) => {
+
     const errors = validationResult(req);
+
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }

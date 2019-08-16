@@ -7,8 +7,6 @@ const { check, validationResult } = require("express-validator");
 const config = require("config");
 const bcrypt = require("bcrypt");
 
-
-
 router.get("/", auth, async (req, res) => {
   try {
     const user = await User.findById(req.user);
@@ -17,6 +15,7 @@ router.get("/", auth, async (req, res) => {
     res.status(500).send("Server Error!");
   }
 });
+
 
 
 router.post(
@@ -35,8 +34,7 @@ router.post(
 
     try {
       let user = await User.findOne({ email });
-      console.log(user);
-      
+
       if (!user) {
         return res
           .status(400)
