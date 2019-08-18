@@ -1,4 +1,7 @@
 import React from "react";
+import "../../utils/setAuthToken"
+import setAuthToken from "../../utils/setAuthToken";
+
 
 class Register extends React.Component {
   constructor(props) {
@@ -33,7 +36,8 @@ class Register extends React.Component {
         
       })
     }).then(response => response.json())
-    .then(data => console.log(data))
+    .then(data => setAuthToken(data.token))
+    
   };
 
   render() {
