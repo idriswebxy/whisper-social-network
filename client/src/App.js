@@ -4,7 +4,8 @@ import Particles from "react-particles-js";
 import Navigation from "./components/Navigation/Navigation";
 import Signin from "./components/Signin/Signin";
 import Register from "./components/Register/Register";
-import './App.css'
+import Profile from "./components/Profile/Profile";
+import "./App.css";
 
 const particlesOptions = {
   particles: {
@@ -18,22 +19,19 @@ const particlesOptions = {
   }
 };
 
-
-
 export default class App extends Component {
-
-  
   render() {
-   
-
     return (
       <Router>
-        <div className="App">
-          <Navigation />
-          <Particles className="particles" params={particlesOptions} />
-          <Route path="/signin" component={Signin} />
-          <Route path="/register" component={Register} />
-        </div>
+        <Switch>
+          <div className="App">
+            <Navigation />
+            <Particles className="particles" params={particlesOptions} />
+            <Route path="/signin" component={Signin} />
+            <Route path="/register" component={Register} />
+            <Route path="/profile" component={Profile} />
+          </div>
+        </Switch>
       </Router>
     );
   }

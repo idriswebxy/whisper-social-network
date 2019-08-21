@@ -4,7 +4,7 @@ export default class Profile extends Component {
   render() {
     return (
       <div>
-        Welcome User!
+        <h1>Welcome User!</h1>
       </div>
     )
   }

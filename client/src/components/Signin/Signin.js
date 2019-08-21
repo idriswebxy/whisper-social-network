@@ -1,6 +1,5 @@
 import React from "react";
-import "../../utils/setAuthToken";
-import setAuthToken from "../../utils/setAuthToken";
+import { Redirect } from "react-router-dom";
 // import axios from "axios";
 
 class Signin extends React.Component {
@@ -32,8 +31,9 @@ class Signin extends React.Component {
       .then(res => res.json())
       .then(user => {
         if (user.id) {
-          setAuthToken(localStorage.token)
+
           console.log(user.id)
+         return <Redirect />
       
         }
       });
