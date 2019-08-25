@@ -31,16 +31,18 @@ class Signin extends React.Component {
       .then(res => res.json())
       .then(user => {
         if (user.id) {
-
-          console.log(user.id)
-         return <Redirect />
-      
+          console.log(user.id);
+          return <Redirect path="/profile" />;
         }
       });
   };
 
+
+  componentDidMount() {
+    return <Redirect path="/profile" />;
+  }
+
   render() {
-   
     return (
       <article className="br3 ba b--black-10 mv4 w-100 w-50-m w-25-l mw6 shadow-5 center">
         <main className="pa4 black-80">
