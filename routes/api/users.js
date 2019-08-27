@@ -8,6 +8,8 @@ const jwt = require("jsonwebtoken");
 const config = require("config");
 require("dotenv").config();
 
+
+// register user
 router.post(
   "/",
   [
