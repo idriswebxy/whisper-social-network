@@ -1,7 +1,7 @@
-import { combinedReducers } from 'redux';
+// import { combinedReducers } from 'redux';
 
 
 
-export default combinedReducers({
+// export default combinedReducers({
 
-})
+// })
