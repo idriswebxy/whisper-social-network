@@ -4,6 +4,7 @@ import Landing from "./components/Layout/Landing";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Login from "./components/Auth/Login";
 import Register from "./components/Auth/Register";
+import Alert from "./components/Layout/Alert";
 
 // Redux
 import { Provider } from "react-redux";
@@ -20,6 +21,7 @@ export default class App extends Component {
             <Navbar />
             <Route exact path="/" component={Landing} />
             <section className="container">
+            <Alert />
               <Switch>
                 <Route exact path="/register" component={Register} />
                 <Route exact path="/login" component={Login} />
