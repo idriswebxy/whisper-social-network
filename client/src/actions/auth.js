@@ -41,7 +41,7 @@ export const loadUser = () => async dispatch => {
 
 // Register User
 export const register = ({ name, email, password }) => async dispatch => {
-  
+
   const config = {
     headers: {
       "Content-Type": "application/json"
@@ -59,6 +59,7 @@ export const register = ({ name, email, password }) => async dispatch => {
     });
 
     dispatch(loadUser());
+    
   } catch (err) {
     const errors = err.response.data.errors;
 

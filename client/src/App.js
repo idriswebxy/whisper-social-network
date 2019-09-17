@@ -11,25 +11,31 @@ import { Provider } from "react-redux";
 import store from "./store";
 
 import "@fortawesome/fontawesome-free";
+import setAuthToken from "./utils/setAuthToken";
 
-export default class App extends Component {
-  render() {
-    return (
-      <Provider store={store}>
-        <Router>
-          <Fragment>
-            <Navbar />
-            <Route exact path="/" component={Landing} />
-            <section className="container">
-            <Alert />
-              <Switch>
-                <Route exact path="/register" component={Register} />
-                <Route exact path="/login" component={Login} />
-              </Switch>
-            </section>
-          </Fragment>
-        </Router>
-      </Provider>
-    );
-  }
+if (localStorage.token) {
+  setAuthToken(localStorage.token);
 }
+
+
+const App = () => {
+  return (
+    <Provider store={store}>
+      <Router>
+        <Fragment>
+          <Navbar />
+          <Route exact path="/" component={Landing} />
+          <section className="container">
+            <Alert />
+            <Switch>
+              <Route exact path="/register" component={Register} />
+              <Route exact path="/login" component={Login} />
+            </Switch>
+          </section>
+        </Fragment>
+      </Router>
+    </Provider>
+  );
+};
+
+export default App;
