@@ -30,10 +30,15 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
     } else {
       register({ name, email, password })
       console.log("Success!");
-      console.log(state.auth.isAuthenticated);
       
     }
   };
+
+  
+  if (isAuthenticated) {
+    return <Redirect to="/dashboard" />;
+  }
+
 
   return (
     <Fragment>
