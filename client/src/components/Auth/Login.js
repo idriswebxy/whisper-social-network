@@ -15,16 +15,19 @@ const Login = ({ login, isAuthenticated }) => {
   const onChange = e =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
+
   const onSubmit = async e => {
     e.preventDefault();
     login(email, password);
     console.log("SUCCESS Login!");
   };
 
+  
   if (isAuthenticated) {
     return <Redirect to="/dashboard" />
   }
 
+  
   return (
     <Fragment>
       <h1 className="large text-primary">Sign In</h1>
