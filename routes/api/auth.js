@@ -7,6 +7,8 @@ const { check, validationResult } = require("express-validator");
 const config = require("config");
 const bcrypt = require("bcrypt");
 
+
+
 router.get("/", auth, async (req, res) => {
   try {
     const user = await User.findById(req.user);

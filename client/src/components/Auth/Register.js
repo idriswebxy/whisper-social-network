@@ -27,14 +27,15 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
     e.preventDefault();
     if (password !== password2) {
        setAlert("Passwords do not match!", "danger");
-    } else {
+    } 
+    else {
       register({ name, email, password })
       console.log("Success!");
       
     }
   };
 
-  
+
   if (isAuthenticated) {
     return <Redirect to="/dashboard" />;
   }
