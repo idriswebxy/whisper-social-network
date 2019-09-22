@@ -14,7 +14,8 @@ import { loadUser } from "./actions/auth";
 import "@fortawesome/fontawesome-free";
 import setAuthToken from "./utils/setAuthToken";
 import "./App.css"
-import Dashboard from "./components/layout/Dashboard";
+
+
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
@@ -39,7 +40,6 @@ const App = () => {
             <Switch>
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
-              <Route exact path="/dashboard" component={Dashboard} />
             </Switch>
           </section>
         </Fragment>
