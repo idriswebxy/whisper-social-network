@@ -6,7 +6,6 @@ import { logout } from "../../actions/auth";
 
 const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
 
-
   const authLinks = (
     <ul>
       <li>

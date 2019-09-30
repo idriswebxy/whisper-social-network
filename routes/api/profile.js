@@ -9,6 +9,8 @@ const Profile = require("../../models/Profile");
 const User = require("../../models/User");
 const Post = require("../../models/Post");
 
+
+
 // @route    GET api/profile/me
 // @desc     Get current users profile
 // @access   Private
@@ -114,6 +116,9 @@ router.post(
   }
 );
 
+
+
+
 // @route    GET api/profile
 // @desc     Get all profiles
 // @access   Public
@@ -126,6 +131,9 @@ router.get("/", async (req, res) => {
     res.status(500).send("Server Error");
   }
 });
+
+
+
 
 // @route    GET api/profile/user/:user_id
 // @desc     Get profile by user ID
@@ -148,6 +156,10 @@ router.get("/user/:user_id", async (req, res) => {
   }
 });
 
+
+
+
+
 // @route    DELETE api/profile
 // @desc     Delete profile, user & posts
 // @access   Private
@@ -166,6 +178,9 @@ router.delete("/", auth, async (req, res) => {
     res.status(500).send("Server Error");
   }
 });
+
+
+
 
 // @route    PUT api/profile/experience
 // @desc     Add profile experience
@@ -226,6 +241,9 @@ router.put(
     }
   }
 );
+
+
+
 
 // @route    DELETE api/profile/experience/:exp_id
 // @desc     Delete experience from profile
@@ -335,6 +353,10 @@ router.delete("/education/:edu_id", auth, async (req, res) => {
     res.status(500).send("Server Error");
   }
 });
+
+
+
+
 
 // @route    GET api/profile/github/:username
 // @desc     Get user repos from Github
