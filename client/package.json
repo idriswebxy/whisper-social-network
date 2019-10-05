@@ -40,7 +40,5 @@
     ]
   },
   "proxy": "http://localhost:5000",
-  "devDependencies": {
-    "@fortawesome/fontawesome-free": "^5.10.2"
-  }
+  "devDependencies": {}
 }

@@ -7,6 +7,7 @@ import {
 
 } from "../actions/types";
 
+
 const initialState = {
   profile: null,
   profiles: [],
@@ -14,6 +15,7 @@ const initialState = {
   loading: true,
   error: {}
 };
+
 
 export default function(state = initialState, action) {
   
