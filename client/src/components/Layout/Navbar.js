@@ -53,6 +53,7 @@ const Navbar = ({ auth: { isAuthenticated, loading }, logout }) => {
       <h1>
         <Link to="/">
         SocialHub
+        
         </Link>
       </h1>
       {!loading && (
