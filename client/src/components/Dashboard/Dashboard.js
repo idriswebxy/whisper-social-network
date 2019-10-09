@@ -5,6 +5,8 @@ import { connect } from "react-redux";
 import Spinner from "../layout/Spinner.js";
 import { getCurrentProfile } from "../../actions/profile";
 
+
+
 const Dashboard = ({
   getCurrentProfile,
   auth: { user },

@@ -7,6 +7,7 @@ import Register from "./components/Auth/Register";
 import Alert from "./components/layout/Alert";
 import Dashboard from "./components/Dashboard/Dashboard";
 import PrivateRoute from "./components/Routing/PrivateRoute";
+import CreateProfile from "./components/ProfileForm/CreateProfile";
 
 // Redux
 import { Provider } from "react-redux";
@@ -17,33 +18,35 @@ import setAuthToken from "./utils/setAuthToken";
 import "./App.css";
 
 
-
 if (localStorage.token) {
   setAuthToken(localStorage.token);
 }
 
 
-
 const App = () => {
-
   useEffect(() => {
     store.dispatch(loadUser());
-  }, [])
+  }, []);
 
   return (
     <Provider store={store}>
       <Router>
         <Fragment>
           <Navbar />
-           <Route exact path="/" component={Landing} />
+          <Route exact path="/" component={Landing} />
           <section className="container">
             <Alert />
             <Switch>
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              <PrivateRoute
+                exact
+                path="/create-profile"
+                component={CreateProfile}
+              />
             </Switch>
-          </section> 
+          </section>
         </Fragment>
       </Router>
     </Provider>
