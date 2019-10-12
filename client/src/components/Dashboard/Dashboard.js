@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import Spinner from "../layout/Spinner.js";
+import Dashboardactions from "./DashboardActions";
 import { getCurrentProfile } from "../../actions/profile";
 
 
@@ -26,7 +27,9 @@ const Dashboard = ({
         Welcome {user && user.name}
       </p>
       {profile !== null ? (
-        <Fragment> Has </Fragment>
+        <Fragment> 
+          <Dashboardactions />        
+        </Fragment>
       ) : (
         <Fragment>
           {" "}

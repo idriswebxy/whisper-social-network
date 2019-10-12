@@ -2,18 +2,20 @@ import React, { useState, Fragment } from "react";
 import PropTypes from "prop-types";
 import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
-import { createProfile } from "../../actions/profile";
+import { createProfile, getCurrentProfile } from "../../actions/profile";
 
-const CreateProfile = ({ createProfile, history }) => {
+const EditProfile = ({ profile: { profile, loading }, createProfile, history, getCurrentProfile }) => {
   const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
     location: "",
     bio: "",
-    status: ""
   });
+
 
   const [displaySocialInputs, toggleSocialInputs] = useState(false);
 
-  const { location, status, bio } = formData;
+  const { firstName, lastName, location, bio } = formData;
 
   const onChange = e => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -24,6 +26,7 @@ const CreateProfile = ({ createProfile, history }) => {
     createProfile(formData, history);
   };
 
+
   return (
     <Fragment>
       <h1 className="large text-primary">Create Your Profile</h1>
@@ -31,19 +34,14 @@ const CreateProfile = ({ createProfile, history }) => {
         <i className="fas fa-user"></i> Let's get some information to make your
         profile
       </p>
-      <form className="form">
-        <div className="form-group">
-          <input type="text" placeholder="Company" name="company" />
-          <small className="form-text">
-            Could be your own company or one you work for
-          </small>
-        </div>
+      <form className="form" onSubmit={e => onSubmit(e)}>
         {/* First Name */}
         <div className="form-group">
           <input
             type="text"
-            placeholder="FirstName"
+            placeholder="First Name"
             name="firstName"
+            value={firstName}
             onChange={e => onChange(e)}
           />
         </div>
@@ -51,8 +49,9 @@ const CreateProfile = ({ createProfile, history }) => {
         <div className="form-group">
           <input
             type="text"
-            placeholder="LastName"
+            placeholder="Last Name"
             name="lastName"
+            value={lastName}
             onChange={e => onChange(e)}
           />
         </div>
@@ -62,6 +61,7 @@ const CreateProfile = ({ createProfile, history }) => {
             type="text"
             placeholder="Location"
             name="location"
+            value={location}
             onChange={e => onChange(e)}
           />
           <small className="form-text">
@@ -70,7 +70,12 @@ const CreateProfile = ({ createProfile, history }) => {
         </div>
         {/* Bio */}
         <div className="form-group">
-          <textarea placeholder="A short bio of yourself" name="bio"></textarea>
+          <textarea
+            placeholder="A short bio of yourself"
+            name="bio"
+            value={bio}
+            onChange={e => onChange(e)}
+          ></textarea>
           <small className="form-text">Tell us a little about yourself</small>
         </div>
         <input type="submit" className="btn btn-primary my-1" />
@@ -82,11 +87,18 @@ const CreateProfile = ({ createProfile, history }) => {
   );
 };
 
+
 CreateProfile.propTypes = {
-  createProfile: PropTypes.func.isRequired
+  createProfile: PropTypes.func.isRequired,
+  profile: PropTypes.object.isRequired,
+  getCurrentProfile: PropTypes.func.isRequired
 };
 
+const mapStateToProps = state => ({
+  profile: state.profile
+})
+
 export default connect(
-  null,
-  { createProfile }
-)(CreateProfile);
+  mapStateToProps,
+  { createProfile, getCurrentProfile }
+)(withRouter(EditProfile));

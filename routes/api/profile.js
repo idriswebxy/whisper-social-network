@@ -40,10 +40,10 @@ router.post(
   [
     auth,
     [
-      check("status", "Status is required")
+      check("firstName", "First Name is required")
         .not()
         .isEmpty(),
-      check("skills", "Skills is required")
+      check("lastName", "Last Name is required")
         .not()
         .isEmpty()
     ]
@@ -55,40 +55,34 @@ router.post(
     }
 
     const {
-      company,
-      website,
+      firstName,
+      lastName,
       location,
       bio,
-      status,
-      githubusername,
-      skills,
-      youtube,
-      facebook,
-      twitter,
-      instagram,
-      linkedin
     } = req.body;
 
     // Build profile object
     const profileFields = {};
     profileFields.user = req.user.id;
-    if (company) profileFields.company = company;
-    if (website) profileFields.website = website;
+    // if (company) profileFields.company = company;
+    // if (website) profileFields.website = website;
+    if (firstName) profileFields.firstName = firstName;
+    if (lastName) profileFields.lastName = lastName;
     if (location) profileFields.location = location;
     if (bio) profileFields.bio = bio;
-    if (status) profileFields.status = status;
-    if (githubusername) profileFields.githubusername = githubusername;
-    if (skills) {
-      profileFields.skills = skills.split(",").map(skill => skill.trim());
-    }
+    // if (status) profileFields.status = status;
+    // if (githubusername) profileFields.githubusername = githubusername;
+    // if (skills) {
+    //   profileFields.skills = skills.split(",").map(skill => skill.trim());
+    // }
 
-    // Build social object
-    profileFields.social = {};
-    if (youtube) profileFields.social.youtube = youtube;
-    if (twitter) profileFields.social.twitter = twitter;
-    if (facebook) profileFields.social.facebook = facebook;
-    if (linkedin) profileFields.social.linkedin = linkedin;
-    if (instagram) profileFields.social.instagram = instagram;
+    // // Build social object
+    // profileFields.social = {};
+    // if (youtube) profileFields.social.youtube = youtube;
+    // if (twitter) profileFields.social.twitter = twitter;
+    // if (facebook) profileFields.social.facebook = facebook;
+    // if (linkedin) profileFields.social.linkedin = linkedin;
+    // if (instagram) profileFields.social.instagram = instagram;
 
     try {
       let profile = await Profile.findOne({ user: req.user.id });
