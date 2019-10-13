@@ -9,9 +9,8 @@ import {
 
 
 const initialState = {
-  profile: null,
+  profile: {},
   profiles: [],
-  repos: [],
   loading: true,
   error: {}
 };

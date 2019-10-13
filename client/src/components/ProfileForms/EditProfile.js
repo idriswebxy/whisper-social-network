@@ -1,4 +1,4 @@
-import React, { useState, Fragment } from "react";
+import React, { useState, Fragment, useEffect } from "react";
 import PropTypes from "prop-types";
 import { Link, withRouter } from "react-router-dom";
 import { connect } from "react-redux";
@@ -15,6 +15,19 @@ const EditProfile = ({ profile: { profile, loading }, createProfile, history, ge
 
   const [displaySocialInputs, toggleSocialInputs] = useState(false);
 
+
+  useEffect(() => {
+    getCurrentProfile();
+
+    setFormData({
+      firstName: loading || !profile.firstName ? "" : profile.firstName,
+      lastName: loading || !profile.lastName ? "" : profile.lastName,
+      location: loading || !profile.location ? "" : profile.location,
+      bio: loading || !profile.bio ? "" : profile.bio,
+    });
+  }, [loading])
+
+
   const { firstName, lastName, location, bio } = formData;
 
   const onChange = e => {
@@ -29,11 +42,11 @@ const EditProfile = ({ profile: { profile, loading }, createProfile, history, ge
 
   return (
     <Fragment>
-      <h1 className="large text-primary">Create Your Profile</h1>
-      <p className="lead">
+      <h1 className="large text-primary">Edit Profile</h1>
+      {/* <p className="lead">
         <i className="fas fa-user"></i> Let's get some information to make your
         profile
-      </p>
+      </p> */}
       <form className="form" onSubmit={e => onSubmit(e)}>
         {/* First Name */}
         <div className="form-group">
@@ -79,7 +92,7 @@ const EditProfile = ({ profile: { profile, loading }, createProfile, history, ge
           <small className="form-text">Tell us a little about yourself</small>
         </div>
         <input type="submit" className="btn btn-primary my-1" />
-        <Link className="btn btn-light my-1" href="/dashboard">
+        <Link className="btn btn-light my-1" to="/dashboard">
           Go Back
         </Link>
       </form>
@@ -88,7 +101,7 @@ const EditProfile = ({ profile: { profile, loading }, createProfile, history, ge
 };
 
 
-CreateProfile.propTypes = {
+EditProfile.propTypes = {
   createProfile: PropTypes.func.isRequired,
   profile: PropTypes.object.isRequired,
   getCurrentProfile: PropTypes.func.isRequired
