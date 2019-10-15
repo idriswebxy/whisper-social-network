@@ -36,7 +36,7 @@ const EditProfile = ({ profile: { profile, loading }, createProfile, history, ge
 
   const onSubmit = e => {
     e.preventDefault();
-    createProfile(formData, history);
+    createProfile(formData, history, true);
   };
 
 
@@ -56,8 +56,11 @@ const EditProfile = ({ profile: { profile, loading }, createProfile, history, ge
             name="firstName"
             value={firstName}
             onChange={e => onChange(e)}
-          />
+          /> 
+          <small className="form-text">First Name</small>
         </div>
+       
+
         {/* Last Name */}
         <div className="form-group">
           <input
@@ -67,7 +70,9 @@ const EditProfile = ({ profile: { profile, loading }, createProfile, history, ge
             value={lastName}
             onChange={e => onChange(e)}
           />
+          <small className="form-text">Last Name</small>
         </div>
+        
         {/* Location */}
         <div className="form-group">
           <input

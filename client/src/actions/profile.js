@@ -3,7 +3,10 @@ import { setAlert } from "./alert";
 
 import {
   GET_PROFILE,
-  PROFILE_ERROR
+  PROFILE_ERROR,
+  CLEAR_PROFILE,
+  ACCOUNT_DELETED,
+  GET_PROFILES
 } from "./types";
 
 
@@ -28,6 +31,45 @@ export const getCurrentProfile = () => async dispatch => {
     })
   }
 } 
+
+
+// Get profile by ID
+export const getProfileById = userId => async dispatch => {
+  try {
+    const res = await axios.get(`/api/profile/user/${userId}`);
+
+    dispatch({
+      type: GET_PROFILE,
+      payload: res.data
+    });
+  } 
+  catch (err) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: { msg: err.response.statusText, status: err.response.status }
+    });
+  }
+};
+
+
+// Get all profiles
+export const getProfiles = () => async dispatch => {
+  try {
+    const res = await axios.get("api/profile");
+
+    dispatch({
+      type: GET_PROFILES,
+      payload: res.data
+    });
+  } 
+  catch (error) {
+    dispatch({
+      type: PROFILE_ERROR,
+      payload: { msg: error.response.statusText, status: error.response.status }
+    })
+  }
+}
+
 
 
 
@@ -65,5 +107,28 @@ export const createProfile = (formData, history, edit = false) => async dispatch
       type: PROFILE_ERROR,
       payload: { msg: error.response.statusText, status: error.response.status }
     })
+  }
+}
+
+
+
+// Delete account
+export const deleteAccount = () => async dispatch => {
+
+  if (window.confirm("Are you sure? this can NOT be undone!")) {
+    try {
+      await axios.delete("/api/profile");
+
+      dispatch({ type: CLEAR_PROFILE });
+      dispatch({ type: ACCOUNT_DELETED });
+
+      dispatch(setAlert("Your account has been permanently deleted"))
+
+    } catch (error) {
+      dispatch({
+        type: PROFILE_ERROR,
+        payload: { msg: error.response.statusText, status: error.response.status }
+      })
+    }
   }
 }

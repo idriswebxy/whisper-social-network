@@ -1,15 +1,15 @@
 import React, { Component, Fragment, useEffect } from "react";
-import Navbar from "./components/layout/Navbar";
-import Landing from "./components/layout/Landing";
+import Navbar from "./components/Layout/Navbar";
+import Landing from "./components/Layout/Landing";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Login from "./components/Auth/Login";
 import Register from "./components/Auth/Register";
-import Alert from "./components/layout/Alert";
+import Alert from "./components/Layout/Alert";
 import Dashboard from "./components/Dashboard/Dashboard";
 import PrivateRoute from "./components/Routing/PrivateRoute";
-import CreateProfile from "./components/ProfileForm/CreateProfile";
+import CreateProfile from "./components/ProfileForms/CreateProfile";
 import EditProfile from "./components/ProfileForms/EditProfile";
-
+import Profiles from "../src/components/Profiles/Profiles";
 
 // Redux
 import { Provider } from "react-redux";
@@ -41,6 +41,7 @@ const App = () => {
             <Switch>
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
+              <Route exact path="/profiles" component={Profiles} />
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
               <PrivateRoute
                 exact
