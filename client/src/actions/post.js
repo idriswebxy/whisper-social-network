@@ -29,3 +29,20 @@ export const getPosts = () => async dispatch => {
     })
   }
 }
+
+
+// Add like 
+export const addLike = id => async dispatch => {
+
+  try {
+    const res = await axios.put(`/api/posts/like/${id}`);
+
+    dispatch({
+      type: UPDATE_LIKES,
+      payload: { id, likes: res.data }
+    })
+  } 
+  catch (error) {
+    
+  }
+}
