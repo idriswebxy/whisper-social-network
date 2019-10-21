@@ -1,4 +1,4 @@
 {
-  "mongoURI": "DB_URL=mongodb+srv://iman:root123@cluster0-a5nwz.mongodb.net/test?",
+  "mongoURI": "mongodb+srv://iman:root123@cluster0-a5nwz.mongodb.net/test?retryWrites=true&w=majority",
   "jwtSecret": "mysecrettoken"
 }
