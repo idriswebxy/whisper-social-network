@@ -1,4 +1,4 @@
-import React, { Component, Fragment, useEffect } from "react";
+import React, { Fragment, useEffect } from "react";
 import Navbar from "./components/Layout/Navbar";
 import Landing from "./components/Layout/Landing";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -12,22 +12,19 @@ import EditProfile from "./components/ProfileForms/EditProfile";
 import Profiles from "../src/components/Profiles/Profiles";
 import Profile from "./components/Profile/Profile";
 import Posts from "./components/Posts/Posts";
-import Post from "./components/Posts/Post";
-
+import Post from "./components/Post/Post";
+import NotFound from "./components/Layout/NotFound";
 
 // Redux
 import { Provider } from "react-redux";
 import store from "./store";
 import { loadUser } from "./actions/auth";
-
 import setAuthToken from "./utils/setAuthToken";
 import "./App.css";
-
 
 if (localStorage.token) {
   setAuthToken(localStorage.token);
 }
-
 
 const App = () => {
   useEffect(() => {
@@ -46,8 +43,10 @@ const App = () => {
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
               <Route exact path="/profiles" component={Profiles} />
-              <Route exact path="/profile/:id" component={Profile} /> 
+              <Route exact path="/profile/:id" component={Profile} />
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
+              <PrivateRoute exact path="/posts" component={Posts} />
+              <PrivateRoute exact path="/posts/:id" component={Post} />
               <PrivateRoute
                 exact
                 path="/create-profile"
@@ -58,10 +57,7 @@ const App = () => {
                 path="/edit-profile"
                 component={EditProfile}
               />
-              <PrivateRoute exact
-              path="/posts"
-              component={Posts} 
-              />
+              <Route component={NotFound} />
             </Switch>
           </section>
         </Fragment>
