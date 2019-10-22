@@ -1,1 +1,1 @@
-web: nodemon dev
+web: npm run dev
