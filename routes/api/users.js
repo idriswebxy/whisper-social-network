@@ -6,7 +6,8 @@ const bcrypt = require("bcryptjs");
 const gravatar = require("gravatar");
 const jwt = require("jsonwebtoken");
 const config = require("config");
-require("dotenv").config();
+
+
 
 
 // register user
@@ -66,7 +67,7 @@ router.post(
 
       jwt.sign(
         payload,
-        process.env.jwtSecret,
+        config.get("jwtSecret"),
         { expiresIn: 360000 },
         (err, token) => {
           if (err) throw err; 
