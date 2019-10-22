@@ -16,7 +16,7 @@ export const getCurrentProfile = () => async dispatch => {
 
   try {
     
-    const res = await axios.get("https://social-hub.herokuapp.com/api/profile/me");
+    const res = await axios.get("/api/profile/me");
 
     dispatch({
       type: GET_PROFILE,
@@ -36,7 +36,7 @@ export const getCurrentProfile = () => async dispatch => {
 // Get profile by ID
 export const getProfileById = userId => async dispatch => {
   try {
-    const res = await axios.get(`https://social-hub.herokuapp.com/api/profile/user/${userId}`);
+    const res = await axios.get(`/api/profile/user/${userId}`);
 
     dispatch({
       type: GET_PROFILE,
@@ -58,7 +58,7 @@ export const getProfiles = () => async dispatch => {
   dispatch({ type: CLEAR_PROFILE })
 
   try {
-    const res = await axios.get("https://social-hub.herokuapp.com/api/profile");
+    const res = await axios.get("/api/profile");
 
     dispatch({
       type: GET_PROFILES,
@@ -86,7 +86,7 @@ export const createProfile = (formData, history, edit = false) => async dispatch
       }
     }
 
-    const res = await axios.post("https://social-hub.herokuapp.com/api/profile", formData, config);
+    const res = await axios.post("/api/profile", formData, config);
 
     dispatch({
       type: GET_PROFILE,
@@ -120,7 +120,7 @@ export const deleteAccount = () => async dispatch => {
 
   if (window.confirm("Are you sure? this can NOT be undone!")) {
     try {
-      await axios.delete("https://social-hub.herokuapp.com/api/profile");
+      await axios.delete("/api/profile");
 
       dispatch({ type: CLEAR_PROFILE });
       dispatch({ type: ACCOUNT_DELETED });
