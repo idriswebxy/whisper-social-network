@@ -20,7 +20,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
 
   const onChange = e =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
-  console.log(name + "\n" + email); // test values
+  
 
 
   const onSubmit = async e => {

@@ -7,7 +7,6 @@ import {
   LOGIN_FAIL,
   LOGOUT,
   ACCOUNT_DELETED
-
 } from "../actions/types";
 
 
@@ -54,7 +53,7 @@ export default function(state = initialState, action) {
           token: null,
           isAuthenticated: false,
           loading: false
-        }
+        };
       
     default:
       return state;
