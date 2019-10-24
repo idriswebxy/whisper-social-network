@@ -4,7 +4,6 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "NODE_ENV= production",
     "start": "node server.js",
     "server": "nodemon server.js",
     "client": "npm start --prefix client",
