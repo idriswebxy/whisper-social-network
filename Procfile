@@ -1,1 +1,1 @@
-web: npm run concurrently \"npm run server\" \"npm run client\"
+web: node server.js
