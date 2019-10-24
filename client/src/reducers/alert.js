@@ -2,15 +2,15 @@ import { SET_ALERT, REMOVE_ALERT } from "../actions/types";
 
 
 
-const inititialState = [];
+const initialState = [];
 
 
 
-export default function(state = inititialState, action) {
+export default function(state = initialState, action) {
   
   const { type, payload } = action;
 
-  switch (action.type) {
+  switch (type) {
     case SET_ALERT:
       return [...state, payload];
 
