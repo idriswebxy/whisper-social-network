@@ -29,9 +29,9 @@ export const loadUser = () => async dispatch => {
     dispatch({
       type: USER_LOADED,
       payload: res.data
-    });
-    
-  } catch (error) {
+    });  
+  } 
+  catch (error) {
     dispatch({
       type: AUTH_ERROR
     });
@@ -45,8 +45,7 @@ export const register = ({ name, email, password }) => async dispatch => {
 
   const config = {
     headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-      Accept: "application/json"
+      "Content-Type": "application/json"
     }
   };
 
@@ -85,8 +84,7 @@ export const login = (email, password) => async dispatch => {
 
   const config = {
     headers: {
-      "Content-Type": "application/x-www-form-urlencoded",
-      "Accept": "application/json"
+      "Content-Type": "application/json"
     }
   };
 
