@@ -85,7 +85,8 @@ export const login = (email, password) => async dispatch => {
 
   const config = {
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "application/x-www-form-urlencoded",
+      "Accept": "application/json"
     }
   };
 
