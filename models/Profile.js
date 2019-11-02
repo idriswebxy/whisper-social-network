@@ -5,15 +5,23 @@ const ProfileSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: "user"
   },
+<<<<<<< HEAD
   company: {
     type: String
   },
   website: {
+=======
+  firstName: {
+    type: String
+  },
+  lastName: {
+>>>>>>> 6028a6025800bc0e4673ada4da1b73dbd333d5bd
     type: String
   },
   location: {
     type: String
   },
+<<<<<<< HEAD
   status: {
     type: String,
     required: true
@@ -109,6 +117,11 @@ const ProfileSchema = new mongoose.Schema({
     type: Date,
     default: Date.now
   }
+=======
+  bio: {
+    type: String
+  },
+>>>>>>> 6028a6025800bc0e4673ada4da1b73dbd333d5bd
 });
 
 module.exports = Profile = mongoose.model("profile", ProfileSchema);
