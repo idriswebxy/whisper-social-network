@@ -1,16 +1,3 @@
-<<<<<<< HEAD
-import React, { Component } from 'react'
-
-export default class Profile extends Component {
-  render() {
-    return (
-      <div>
-        Welcome User!
-      </div>
-    )
-  }
-}
-=======
 import React, { Fragment, useEffect } from 'react';
 import PropTypes from "prop-types";
 import { Link } from 'react-router-dom';
@@ -49,6 +36,7 @@ const Profile = ({
                 Edit Profile
               </Link>
             )}
+            
         </Fragment>
       )}
     </Fragment>
@@ -70,4 +58,3 @@ const mapStateToProps = state => ({
 
 
 export default connect(mapStateToProps, { getProfileById })(Profile);
->>>>>>> 6028a6025800bc0e4673ada4da1b73dbd333d5bd

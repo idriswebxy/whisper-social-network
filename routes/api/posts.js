@@ -1,13 +1,5 @@
 const express = require("express");
 const router = express.Router();
-<<<<<<< HEAD
-
-router.get("/", (req, res) => {
-  res.send("Posts route...");
-});
-
-
-=======
 const { check, validationResult } = require("express-validator");
 const auth = require("../../middleware/auth");
 
@@ -277,5 +269,4 @@ router.delete("/comment/:id/:comment_id", auth, async (req, res) => {
   }
 });
 
->>>>>>> 6028a6025800bc0e4673ada4da1b73dbd333d5bd
 module.exports = router;

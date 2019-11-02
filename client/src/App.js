@@ -1,45 +1,3 @@
-<<<<<<< HEAD
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import React, { Component } from "react";
-import Particles from "react-particles-js";
-import Navigation from "./components/Navigation/Navigation";
-import Signin from "./components/Signin/Signin";
-import Register from "./components/Register/Register";
-import './App.css'
-
-const particlesOptions = {
-  particles: {
-    number: {
-      value: 30,
-      density: {
-        enable: true,
-        value_area: 800
-      }
-    }
-  }
-};
-
-
-
-export default class App extends Component {
-
-  
-  render() {
-   
-
-    return (
-      <Router>
-        <div className="App">
-          <Navigation />
-          <Particles className="particles" params={particlesOptions} />
-          <Route path="/signin" component={Signin} />
-          <Route path="/register" component={Register} />
-        </div>
-      </Router>
-    );
-  }
-}
-=======
 import React, { Fragment, useEffect } from "react";
 import Navbar from "./components/Layout/Navbar";
 import Landing from "./components/Layout/Landing";
@@ -56,6 +14,7 @@ import Profile from "./components/Profile/Profile";
 import Posts from "./components/Posts/Posts";
 import Post from "./components/Post/Post";
 import NotFound from "./components/Layout/NotFound";
+import Particles from "react-particles-js";
 
 // Redux
 import { Provider } from "react-redux";
@@ -69,7 +28,6 @@ if (localStorage.token) {
 }
 
 const App = () => {
-
   useEffect(() => {
     store.dispatch(loadUser());
   }, []);
@@ -79,14 +37,15 @@ const App = () => {
       <Router>
         <Fragment>
           <Navbar />
-          <Route exact path="/" component={Landing} />
+
           <section className="container">
+            <Route exact path="/" component={Landing} />
             <Alert />
             <Switch>
               <Route exact path="/register" component={Register} />
               <Route exact path="/login" component={Login} />
-              <Route exact path="/profiles" component={Profiles} />
-              <Route exact path="/profile/:id" component={Profile} />
+              <PrivateRoute exact path="/profiles" component={Profiles} />
+              <PrivateRoute exact path="/profile/:id" component={Profile} />
               <PrivateRoute exact path="/dashboard" component={Dashboard} />
               <PrivateRoute exact path="/posts" component={Posts} />
               <PrivateRoute exact path="/posts/:id" component={Post} />
@@ -100,7 +59,7 @@ const App = () => {
                 path="/edit-profile"
                 component={EditProfile}
               />
-              <Route component={NotFound} />
+              {/* <Route component={NotFound} /> */}
             </Switch>
           </section>
         </Fragment>
@@ -110,4 +69,3 @@ const App = () => {
 };
 
 export default App;
->>>>>>> 6028a6025800bc0e4673ada4da1b73dbd333d5bd

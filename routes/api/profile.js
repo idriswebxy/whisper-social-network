@@ -1,15 +1,4 @@
 const express = require("express");
-<<<<<<< HEAD
-const router = express.Router();
-const auth = require("../../middleware/auth");
-const { check, validationResult } = require("express-validator/check");
-
-const Profile = require("../../models/Profile");
-const User = require("../../models/Users");
-
-
-
-=======
 const request = require("request");
 const config = require("config");
 const router = express.Router();
@@ -25,7 +14,6 @@ const Post = require("../../models/Post");
 // @route    GET api/profile/me
 // @desc     Get current users profile
 // @access   Private
->>>>>>> 6028a6025800bc0e4673ada4da1b73dbd333d5bd
 router.get("/me", auth, async (req, res) => {
   try {
     const profile = await Profile.findOne({ user: req.user.id }).populate(
@@ -36,31 +24,14 @@ router.get("/me", auth, async (req, res) => {
     if (!profile) {
       return res.status(400).json({ msg: "There is no profile for this user" });
     }
-<<<<<<< HEAD
-=======
 
     res.json(profile);
->>>>>>> 6028a6025800bc0e4673ada4da1b73dbd333d5bd
   } catch (err) {
     console.error(err.message);
     res.status(500).send("Server Error");
   }
 });
 
-<<<<<<< HEAD
-
-
-
-router.post(
-  "/",
-  [
-    auth,
-    [
-      check("status", "Status is required")
-        .not()
-        .isEmpty(),
-      check("skills", "Skills is required")
-=======
 // @route    POST api/profile
 // @desc     Create or update user profile
 // @access   Private
@@ -309,7 +280,6 @@ router.put(
         .not()
         .isEmpty(),
       check("from", "From date is required")
->>>>>>> 6028a6025800bc0e4673ada4da1b73dbd333d5bd
         .not()
         .isEmpty()
     ]
@@ -319,11 +289,6 @@ router.put(
     if (!errors.isEmpty()) {
       return res.status(400).json({ errors: errors.array() });
     }
-<<<<<<< HEAD
-  }
-);
-
-=======
 
     const {
       school,
@@ -417,5 +382,4 @@ router.get("/github/:username", (req, res) => {
   }
 });
 
->>>>>>> 6028a6025800bc0e4673ada4da1b73dbd333d5bd
 module.exports = router;

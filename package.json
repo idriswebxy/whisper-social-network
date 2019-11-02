@@ -2,40 +2,18 @@
   "name": "social-hub",
   "version": "1.0.0",
   "description": "",
-<<<<<<< HEAD
-  "main": "index.js",
-  "scripts": {
-    "server": "nodemon server.js",
-    "app": "concurrently \"nodemon server.js\" \"cd client && npm start\""
-=======
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "server": "nodemon server.js",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
-   
->>>>>>> 6028a6025800bc0e4673ada4da1b73dbd333d5bd
+    "heroku-postbuild": "cd client && npm install --only=dev && npm install && npm run build"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-<<<<<<< HEAD
-    "bcrypt": "^3.0.6",
-    "body-parser": "^1.19.0",
-    "concurrently": "^4.1.1",
-    "config": "^3.2.1",
-    "cors": "^2.8.5",
-    "dotenv": "^8.0.0",
-    "express": "^4.17.1",
-    "express-validator": "^6.1.1",
-    "gravatar": "^1.8.0",
-    "jsonwebtoken": "^8.5.1",
-    "mongoose": "^5.6.5",
-    "nodemon": "^1.19.1",
-=======
     "bcrypt-nodejs": "0.0.3",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
@@ -47,10 +25,10 @@
     "express-validator": "^6.2.0",
     "gravatar": "^1.8.0",
     "jsonwebtoken": "^8.5.1",
+    "mongodb": "^3.3.3",
     "mongoose": "^5.7.6",
     "nodemon": "^1.19.4",
     "path": "^0.12.7",
->>>>>>> 6028a6025800bc0e4673ada4da1b73dbd333d5bd
     "request": "^2.88.0"
   }
 }

@@ -2,17 +2,30 @@ import React from "react";
 import { Link, Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import Particles from "react-particles-js";
+
+const particlesOptions = {
+  particles: {
+    number: {
+      value: 50,
+      density: {
+        enable: true,
+        value_area: 800
+      }
+    }
+  }
+};
 
 
 
 const Landing = ({ isAuthenticated }) => {
-  
   if (isAuthenticated) {
     return <Redirect to="/dashboard" />;
   }
 
   return (
-    <section className="landing">
+    <section className="">
+      <Particles className="particles" params={particlesOptions} />
       <div className="dark-overlay">
         <div className="landing-inner">
           <h1 className="x-large">SocialHub</h1>

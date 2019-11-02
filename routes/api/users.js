@@ -1,15 +1,6 @@
 const express = require("express");
 const router = express.Router();
 const { check, validationResult } = require("express-validator");
-<<<<<<< HEAD
-const User = require("../../models/Users");
-const bcrypt = require("bcrypt");
-const gravatar = require("gravatar");
-const jwt = require("jsonwebtoken");
-const config = require("config");
-require("dotenv").config();
-
-=======
 const User = require("../../models/User");
 const bcrypt = require("bcryptjs");
 const gravatar = require("gravatar");
@@ -20,7 +11,6 @@ const config = require("config");
 
 
 // register user
->>>>>>> 6028a6025800bc0e4673ada4da1b73dbd333d5bd
 router.post(
   "/",
   [
