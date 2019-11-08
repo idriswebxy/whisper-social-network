@@ -1,5 +1,0 @@
-{
-  "mongoURI": "mongodb://tobi:l0c0_m0c0@ds241288.mlab.com:41288/apex-1",
-  "jwtSecret": "mysecrettoken",
-  "NODE_ENV": "production"
-}
